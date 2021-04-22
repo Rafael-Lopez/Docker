@@ -1,0 +1,14 @@
+*************************************************************************************************
+                                    Docker Basic Commands
+*************************************************************************************************
+
+docker run image_name                          - Run a container from an image
+docker run -d image_name                       - Run a container (in the background) from an image
+docker ps                                      - List all the running containers
+docker ps -a                                   - List all containers (running and stopped)
+docker stop container_id(or name)              - Stop a running container
+docker rm container_id(or name)                - Remove a container (to free up space)
+docker images                                  - List all images downloaded
+docker rmi image_name                          - Remove an image (to free up space)
+docker pull image_name                         - To download an image
+docker exec container_id command_to_execute    - Run a command inside a running container
