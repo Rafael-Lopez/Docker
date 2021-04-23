@@ -17,12 +17,12 @@ docker exec container_id command_to_execute    - Run a command inside a running 
                                           docker run
 *************************************************************************************************
 
-docker run image_name:tag                      - Specific version to use. Default value is 'latest'
-docker run image_name                          - Run a container in Attach mode (you can't do anything else in the console, other than view the output)
-docker run -d image_name                       - Run container in Detach mode. You will be back to the console after the command is run
-docker attach container_name                   - Attach the running container
-docker run -i container_name                   - Run container that listens to the standard input of the Docker host. By default, Docker doesn't listen 
-                                                 to the standard input, so if you have an app that requires user input, the Docker container is not
-                                                 going to wait if run without -i
-docker run -p host_port:container_port         - PORT MAPPING - Run container, mapping a container port to a host port.
-docker run -v external_dir:container_dir       - VOLUME MAPPING - Run container, mounting the external directory to the folder inside the Docker container
+docker run image_name:tag                                 - Specific version to use. Default value is 'latest'
+docker run image_name                                     - Run a container in Attach mode (you can't do anything else in the console, other than view the output)
+docker run -d image_name                                  - Run container in Detach mode. You will be back to the console after the command is run
+docker attach container_name                              - Attach the running container
+docker run -i image_name                                  - Run container that listens to the standard input of the Docker host. By default, Docker doesn't listen
+                                                            to the standard input, so if you have an app that requires user input, the Docker container is not
+                                                            going to wait if run without -i
+docker run -p host_port:container_port image_name         - PORT MAPPING - Run container, mapping a container port to a host port.
+docker run -v external_dir:container_dir image_name       - VOLUME MAPPING - Run container, mounting the external directory to the folder inside the Docker container
