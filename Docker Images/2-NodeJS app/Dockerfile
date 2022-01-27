@@ -32,3 +32,6 @@ EXPOSE 80
 CMD ["node", "server.js"]
 
 # If you don't specify a CMD, the base image's CMD will be executed. If there's no base image nor CMD, you'd get an error
+
+# To build image: docker build -t nodejs-app .
+# To run container: docker run --name nodejs-app -p80:80 -d nodejs-app
