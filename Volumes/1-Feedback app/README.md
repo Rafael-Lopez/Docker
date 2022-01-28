@@ -12,4 +12,8 @@ docker build -t feedback-app .
 
 ## Run container
 ```bash
-docker run --name feedback-app -p 80:80 -d feedback-app 
+docker run --name feedback-app -p 80:80 -d feedback-app
+```
+
+## Note
+Dummy.txt files were simply added to have the /feedback and /temp folders committed. Empty folders are not added to GitHub.
