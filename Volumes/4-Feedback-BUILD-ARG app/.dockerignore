@@ -1,0 +1,8 @@
+# Here you can specify what NOT to copy
+# For example, we don't want to copy the node_modules folder into the image, in case we create it on accident by running 'npm install' locally
+node_modules
+
+# We could also consider adding the following to entries:
+Dockerfile
+.git
+# In general, you want to add anything which isn't required by your application to execute correctly.
