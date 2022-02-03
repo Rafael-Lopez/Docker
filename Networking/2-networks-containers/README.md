@@ -1,4 +1,4 @@
-# Networks-demo app
+# Networks-containers app
 Node app that acts as a web api to get Star Wars info through the https://swapi.dev/ API, and can store favorite movies using MongoDB.
 This is a demo to demonstrate how Container to Container communication works.
 
