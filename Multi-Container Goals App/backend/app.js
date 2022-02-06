@@ -83,8 +83,9 @@ app.delete('/goals/:id', async (req, res) => {
   }
 });
 
+// https://docs.mongodb.com/manual/reference/connection-string/
 mongoose.connect(
-  'mongodb://mongo-db:27017/course-goals',
+  'mongodb://admin:admin@mongo-db:27017/course-goals?authSource=admin',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

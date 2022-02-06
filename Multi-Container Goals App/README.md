@@ -14,7 +14,7 @@ docker network create goals-net
 
 ### Database Setup
 ```bash
-docker run --name mongo-db --rm -d --network goals-net mongo
+docker run --name mongo-db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -v goals-app-data:/data/db mongo
 ```
 
 ### Backend
