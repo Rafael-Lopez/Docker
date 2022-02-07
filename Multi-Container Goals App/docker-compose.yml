@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - goals-app-data:/data/db
+    # environment:
+    # # - MONGO_INITDB_ROOT_USERNAME=admin
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: admin  
+    env_file: 
+      - ./env/mongo.env
+    # You can add services to a custom network if you want. But by default, when you use Docker Compose,
+    # Docker will automatically create a new environment for all the services specified in this compose file,
+    # and it will add all the services to that network out of the box. So all these services which are defined in one
+    # and the same compose file will already be part of one and the same network that was created for them by Docker. 
+    # networks:
+    #   - goals-net    
+  # backend:
+    
+  # frontend:
+# For named volumes, you also need to add a volumes' at the top level. Anonymous volumes and bind mounts don't need this.
+volumes:
+  goals-app-data:   
+    
