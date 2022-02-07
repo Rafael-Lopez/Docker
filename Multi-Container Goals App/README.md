@@ -24,10 +24,11 @@ docker build -t goals-node .
 ```
 2. Run container
 ```bash
-docker run --name goals-backend --rm -d -p 80:80 --network goals-net -v ABSOLUTE/PATH/TO/RESOURCE:/app -v logs:/app/logs -v /app/node_modules goals-node
+docker run --name goals-backend -v "$(pwd)":/app -v logs:/app/logs -v /app/node_modules -d --rm -p 80:80 --network goals-net -e MONGODB_USERNAME=admin -e MONGODB_PASSWORD=admin goals-node
 ```
 - Notes
   - We need to expose port 80 so that the frontend can talk to the backend.
+  - For Nodemon to work when running Docker on Windows, you need to change "nodemon app.js" with "nodemon -L app.js" in package.json
 
 ### Frontend
 1. Build image
