@@ -37,7 +37,7 @@ docker build -t goals-react .
 ```
 2. Run container
 ```bash
-docker run --name goals-frontend "$(pwd)":/app/src --rm -d -p 3000:3000 -it goals-react
+docker run --name goals-frontend -v "$(pwd)":/app/src --rm -d -p 3000:3000 -it goals-react
 ```
 - Notes
   - You need to run it in interactive mode. Otherwise, the container starts and stops. 
