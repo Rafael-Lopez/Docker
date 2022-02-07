@@ -1,6 +1,8 @@
 version: '3.8'
 services:
-  mongodb:
+  # The names you specify under services are the 'container names', and you can use these names inside your code 
+  # to establish network connections. Example: ./backend/app.js - line 88
+  mongo-db:
     image: 'mongo'
     volumes:
       - goals-app-data:/data/db
@@ -16,10 +18,32 @@ services:
     # and the same compose file will already be part of one and the same network that was created for them by Docker. 
     # networks:
     #   - goals-net    
-  # backend:
-    
+  backend:
+    # With this form, Docker will automatically look for 'Dockerfile' in the path provided
+    build: ./backend
+    # With this form, you can actually especify which Dockerfile to use to build the image. Could be useful if 
+    # you have multiple Dockerfiles. Example: Dockerfile, Dockerfile-dev, etc.
+    # Note on 'context': it can be the path to your Dockerfile, like this example here, but it will also be the place
+    # where the Dockerfile is built thereafter, so where the image will be generated. That means that your context should be set
+    # to a folder, which includes everything the Dockerfile might be referring to.
+    # build:
+    #   context: ./backend
+    #   dockerfile: DOckerfile-dev
+    #   args:
+    #     some-arg: arg1
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs  
+      # For bind mounts, when using docker-compose, we are allowed to use a relative path relative from the docker-compose.yml file.
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - mongo-db  
   # frontend:
 # For named volumes, you also need to add a volumes' at the top level. Anonymous volumes and bind mounts don't need this.
 volumes:
   goals-app-data:   
-    
+  logs:
