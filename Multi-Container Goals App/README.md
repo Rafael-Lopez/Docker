@@ -28,7 +28,7 @@ docker run --name goals-backend -v "$(pwd)":/app -v logs:/app/logs -v /app/node_
 ```
 - Notes
   - We need to expose port 80 so that the frontend can talk to the backend.
-  - For Nodemon to work when running Docker on Windows, you need to change "nodemon app.js" with "nodemon -L app.js" in package.json
+  - For Nodemon to work when running Docker on Windows, you need to change "nodemon app.js" with "nodemon -L app.js" in package.json. Basically, when using WSL 2, Windows doesn't forward filesystem events to WSL, so Nodemon doesn't get notified of file changes happening in Windows. If you modify your js files from inside a WSL shell, nodemon should actually pick up on the changes and restart the app. To solve this, we can use polling to get hot reload when editing files from Windows: https://github.com/remy/nodemon#application-isnt-restarting
 
 ### Frontend
 1. Build image
