@@ -42,7 +42,18 @@ services:
       - ./env/backend.env
     depends_on:
       - mongo-db  
-  # frontend:
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    # Remember that the React container needs to be run in interactive mode. How do we do it here?
+    # We need 'stdin_open' and 'tty' options set to TRUE. After all, this is what the -it flag does.
+    stdin_open: true
+    tty: true  
+    depends_on:
+      - backend  
 # For named volumes, you also need to add a volumes' at the top level. Anonymous volumes and bind mounts don't need this.
 volumes:
   goals-app-data:   
