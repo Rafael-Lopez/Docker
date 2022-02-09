@@ -8,7 +8,7 @@ docker build -t node-util-enhanced .
 
 ## Run container
 ```bash
-docker run -it -v "$(pwd)":/app node-util-enhanced init
+docker run --rm -it -v "$(pwd)":/app node-util-enhanced init
 ```
 
 - Notes

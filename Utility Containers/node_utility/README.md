@@ -8,7 +8,7 @@ docker build -t node-util .
 
 ## Run container
 ```bash
-docker run -it -v "$(pwd)":/app node-util npm init
+docker run --rm -it -v "$(pwd)":/app node-util npm init
 ```
 
 - Notes
