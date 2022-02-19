@@ -1,8 +1,16 @@
-FROM php:7.4-fpm-alpine
-
+FROM php:8.0-fpm-alpine
+ 
 WORKDIR /var/www/html
-
+ 
+COPY src .
+ 
 RUN docker-php-ext-install pdo pdo_mysql
+ 
+RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
+
+COPY --chown=laravel:laravel src .
+
+USER laravel 
 
 # We don't need a CMD here. Remember, if you don't have a command or entry point at the end, then 
 # the command or entry point of the base image will be used if it has any.
