@@ -29,3 +29,9 @@ Run app by only specifying 'server' in ```docker-compose``` command and re-build
 docker-compose up -d --build server
 ```
 You can use this option when you know you change something in one of your images (Dockerfiles).
+
+## Run Artisan migrations
+Make sure the server is running, and then run:
+```bash
+docker-compose run --rm artisan migrate
+```

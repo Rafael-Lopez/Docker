@@ -39,5 +39,18 @@ services:
       dockerfile: ./dockerfiles/composer.dockerfile
     volumes:
       - ./src:/var/www/html  
-  # artisan:
-  # npm:    
+  artisan:
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/php.dockerfile
+    volumes:
+      - ./src:/var/www/html  
+    # This allows us to override or add an ENTRYPOINT if it doesn't exist yet in a Dockerfile. 
+    entrypoint: ["php", "/var/www/html/artisan"]
+  npm:   
+    # We could write a Dockerfile for npm, but this is just to show that we can set all that here as well.
+    image: node:14
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
+    volumes:
+      - ./src:/var/www/html  
