@@ -6,8 +6,21 @@ services:
     ports:
       - '8000:80'
     volumes:
-      - './nginx/nginx.conf:/etc/nginx/nginx.conf:ro'
-  # php:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  php:
+    build: 
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+      volumes: 
+        - ./src:/var/www/html:delegated
+      # ports:
+      # The port we need to expose is specified in nginx/nginx.conf (line 12)
+      # Notice also that, in that same line (php:3000 - or php:9000 after the update), we use 'php' because that's the name of this service. But
+      #  we could've used an IP address too. We are simply taking advantage of the fact that all these containers are 
+      # running in the same network by default, so Docker is able to translate the service names.
+        # - '9000:3000' 
+      # All that being said, we don't need 'ports' here, because all we need is container-to-container communication,
+      # so exposing the port to the host is not needed.
   # mysql:
   # composer:
   # artisan:
