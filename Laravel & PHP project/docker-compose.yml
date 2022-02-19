@@ -11,8 +11,8 @@ services:
     build: 
       context: ./dockerfiles
       dockerfile: php.dockerfile
-      volumes: 
-        - ./src:/var/www/html:delegated
+    volumes: 
+      - ./src:/var/www/html:delegated
       # ports:
       # The port we need to expose is specified in nginx/nginx.conf (line 12)
       # Notice also that, in that same line (php:3000 - or php:9000 after the update), we use 'php' because that's the name of this service. But
