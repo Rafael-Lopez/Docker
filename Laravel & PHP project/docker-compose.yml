@@ -2,7 +2,18 @@ version: '3.8'
 
 services:
   server:
-    image: nginx:stable-alpine
+    build:
+      # 'context' does more than just set the folder in which this Dockerfile can be found. It also sets the folder
+      # in which the Dockerfile will be built. That means that, the 'src' and 'nginx' folders will be unreachable (we
+      # are copying these two folders into the image - look at the DOckerfile), because they are not in the 'dockerfiles' 
+      # folder, but one level above. Therefore, instead of using:
+      # context: ./dockerfiles
+      # dockerfile: nginx.dockerfile
+      # we do:
+      # context: .
+      # dockerfile: .dockerfiles/nginx.dockerfile 
+      context: .
+      dockerfile: ./dockerfiles/nginx.dockerfile
     ports:
       - '8000:80'
     volumes:
